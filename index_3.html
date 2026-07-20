@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VEO Sports — Official Orbea Importer for Australia</title>
+<meta name="description" content="VEO Sports is the exclusive gateway to Orbea in Australia — Basque racing pedigree, factory-direct logistics and world-class dealer support, delivered locally."/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Hanken+Grotesk:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: "#ffffff",
+          surface: "#f8f9f9",
+          "surface-container": "#f4f5f5",
+          ink: "#111415",
+          "ink-soft": "#5e5e5e",
+          "ink-faint": "#8a8f8f",
+          line: "#e6e8e8",
+          "velocity-teal": "#00CED1",
+          "deep-obsidian": "#0A0A0A",
+        },
+        fontFamily: {
+          display: ["'Hanken Grotesk'", "system-ui", "sans-serif"],
+          body: ["Inter", "system-ui", "sans-serif"],
+          mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        },
+        maxWidth: { shell: "1760px" },
+        spacing: { "section": "120px", "section-sm": "72px" },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root { --teal: #00CED1; }
+  html { scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; }
+
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  .tight { line-height: 1.02; letter-spacing: -0.03em; }
+  .mono-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+
+  /* Buttons — solid + ghost per design system, teal only on active/focus */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:9999px;
+         font-weight:700; font-size:13px; letter-spacing:-0.01em; padding:.85rem 2rem;
+         transition: background-color .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
+  .btn:focus-visible { outline:none; box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--teal); }
+  .btn-primary { background:#111415; color:#fff; }
+  .btn-primary:hover { background:#000; transform:translateY(-1px); }
+  .btn-invert { background:#fff; color:#111415; }
+  .btn-invert:hover { background:#111415; color:#fff; transform:translateY(-1px); }
+  .btn-ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.7); }
+  .btn-ghost:hover { background:#fff; color:#111415; }
+
+  /* Inputs — dark bottom-border that lights teal on focus */
+  .field { background:#fff; border:1px solid var(--line,#e6e8e8); border-radius:9999px;
+           padding:.8rem 1.4rem; font-size:14px; width:100%; transition:border-color .2s, box-shadow .2s; }
+  .field:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(0,206,209,.15); }
+
+  /* Image fallback: if a photo 404s we hide it and reveal an engineered gradient beneath */
+  .ph { background: radial-gradient(120% 120% at 20% 0%, #1c2223 0%, #0a0c0d 60%, #050607 100%); }
+  .img-failed { opacity:0 !important; }
+
+  /* Scroll reveal */
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* Route motif ticker */
+  .route-line::before, .route-line::after { content:""; height:1px; flex:1; background:linear-gradient(90deg, transparent, rgba(255,255,255,.45)); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    .reveal { opacity:1 !important; transform:none !important; transition:none; }
+    * { animation:none !important; }
+  }
+</style>
+</head>
+
+<body class="bg-background text-ink font-body selection:bg-ink selection:text-white overflow-x-hidden">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-ink focus:text-white focus:px-4 focus:py-2 focus:rounded-full text-sm">Skip to content</a>
+
+<!-- ================= NAV ================= -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur-xl border-b border-line transition-shadow duration-300">
+  <div class="max-w-shell mx-auto px-6 md:px-14 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-10">
+      <a href="#top" aria-label="VEO Sports home" class="flex items-center">
+        <img src="data:image/png;base64,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" alt="VEO Sports" class="h-9 w-auto"/>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#stories" class="text-[13px] font-semibold uppercase tracking-tight hover:text-velocity-teal transition-colors">Stories</a>
+        <a href="#range" class="text-[13px] font-semibold uppercase tracking-tight hover:text-velocity-teal transition-colors">Bikes</a>
+        <a href="#dealers" class="text-[13px] font-semibold uppercase tracking-tight hover:text-velocity-teal transition-colors">Dealers</a>
+        <a href="#apply" class="text-[13px] font-semibold uppercase tracking-tight hover:text-velocity-teal transition-colors">Commitment</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="hidden md:flex items-center gap-4 text-ink">
+        <button aria-label="Search" class="hover:text-velocity-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
+        <button aria-label="Account" class="hover:text-velocity-teal transition-colors"><span class="material-symbols-outlined">person</span></button>
+        <button aria-label="Bag" class="hover:text-velocity-teal transition-colors"><span class="material-symbols-outlined">shopping_bag</span></button>
+      </div>
+      <a href="#apply" class="hidden sm:inline-flex btn btn-primary !py-2 !px-5">Become a dealer</a>
+      <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="lg:hidden text-ink"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="fixed inset-0 z-[60] bg-ink text-white translate-x-full transition-transform duration-400 ease-[cubic-bezier(.4,0,.2,1)] lg:hidden">
+  <div class="px-6 h-16 flex items-center justify-between border-b border-white/10">
+    <img src="data:image/png;base64,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" alt="VEO Sports" class="h-9 w-auto"/>
+    <button id="menuClose" aria-label="Close menu"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <nav class="flex flex-col px-6 py-10 gap-2">
+    <a href="#stories" data-close class="font-display text-3xl font-extrabold py-3 border-b border-white/10">Stories</a>
+    <a href="#range" data-close class="font-display text-3xl font-extrabold py-3 border-b border-white/10">Bikes</a>
+    <a href="#dealers" data-close class="font-display text-3xl font-extrabold py-3 border-b border-white/10">Dealers</a>
+    <a href="#apply" data-close class="font-display text-3xl font-extrabold py-3 border-b border-white/10">Commitment</a>
+    <a href="#apply" data-close class="btn btn-invert mt-8 w-full">Become a dealer</a>
+  </nav>
+</div>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ================= HERO ================= -->
+<section class="relative min-h-[92vh] flex items-end overflow-hidden ph">
+  <img src="https://images.unsplash.com/photo-1681295686947-49d226a2e9aa?auto=format&fit=crop&w=2400&q=80"
+       alt="Cyclist on a mountain road at sunrise" onerror="this.classList.add('img-failed')"
+       class="absolute inset-0 w-full h-full object-cover"/>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.15) 45%,rgba(0,0,0,.72) 100%)"></div>
+
+  <div class="relative z-10 w-full max-w-shell mx-auto px-6 md:px-14 pb-16 md:pb-24">
+    <div class="route-line hidden md:flex items-center gap-4 mb-8 max-w-xl reveal">
+      <span class="mono-label text-white/80 whitespace-nowrap">Mallabia 43.17°N</span>
+      <span class="mono-label text-velocity-teal whitespace-nowrap">Melbourne 37.81°S</span>
+    </div>
+    <div class="max-w-4xl">
+      <p class="mono-label text-velocity-teal mb-5 reveal">Official Orbea Importer · Australia</p>
+      <h1 class="font-display text-white font-extrabold tight text-[44px] sm:text-[64px] lg:text-[84px] mb-6 reveal">
+        European cycling innovation, delivered to Australia.
+      </h1>
+      <p class="text-white/90 text-lg md:text-xl max-w-2xl mb-10 font-medium leading-relaxed reveal">
+        Experience the Basque racing pedigree. VEO Sports is the exclusive gateway to the world of Orbea in Australia.
+      </p>
+      <div class="flex flex-wrap gap-4 reveal">
+        <a href="#range" class="btn btn-invert px-10">Discover VEO</a>
+        <a href="#dealers" class="btn btn-ghost px-10">Dealer portal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORIES ================= -->
+<section id="stories" class="py-section-sm md:py-section bg-white px-6 md:px-14">
+  <div class="max-w-shell mx-auto">
+    <div class="mb-14 max-w-3xl">
+      <p class="mono-label text-ink-faint mb-4 reveal">01 — The Values</p>
+      <h2 class="font-display text-[34px] md:text-[46px] font-extrabold tight mb-4 reveal">Stories where our values come to life</h2>
+      <p class="text-ink-soft text-lg reveal">VEO Sports bridges the distance between Spanish engineering and Australian terrain. Discover our commitment to the local cycling community.</p>
+      <a href="#dealers" class="inline-flex btn btn-primary px-9 mt-8 reveal">Discover more</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Story 1 -->
+      <article class="reveal group relative aspect-[4/5] overflow-hidden cursor-pointer ph">
+        <img alt="Cyclist on a mountain road at sunrise" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+             src="https://www.orbea.com/uploads/microsites/images/9157_01_home_orcaaero27_hero_900x1200.webp"/>
+        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.82),transparent 55%)"></div>
+        <div class="absolute bottom-0 left-0 p-7">
+          <span class="mono-label text-white/60 mb-2 block">Heritage</span>
+          <h3 class="font-display text-white text-2xl font-bold tight">From Mallabia to Melbourne</h3>
+        </div>
+      </article>
+      <!-- Story 2 -->
+      <article class="reveal group relative aspect-[4/5] overflow-hidden cursor-pointer ph">
+        <img alt="Orbea Carpe urban bike" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+             src="https://www.orbea.com/uploads/microsites/images/4371_03a_home_cardgrid_1024x768.webp"/>
+        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.82),transparent 55%)"></div>
+        <div class="absolute bottom-0 left-0 p-7">
+          <span class="mono-label text-white/60 mb-2 block">Partnership</span>
+          <h3 class="font-display text-white text-2xl font-bold tight">Empowering the local expert</h3>
+        </div>
+      </article>
+      <!-- Story 3 -->
+      <article class="reveal group relative aspect-[4/5] overflow-hidden cursor-pointer ph">
+        <img alt="MyOrbea Custom painted frame" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+             src="https://cms.orbea.com/uploads/microsites/images/1012_09_orca-aeromy27_custom_2a_ambiencebanner_2500x1406.webp"/>
+        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.82),transparent 55%)"></div>
+        <div class="absolute bottom-0 left-0 p-7">
+          <span class="mono-label text-white/60 mb-2 block">Custom</span>
+          <h3 class="font-display text-white text-2xl font-bold tight">MyO: your world, your bike</h3>
+        </div>
+      </article>
+      <!-- Story 4 -->
+      <article class="reveal group relative aspect-[4/5] overflow-hidden cursor-pointer ph">
+        <img alt="Orbea Oiz cross-country bike" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+             src="https://www.orbea.com/uploads/microsites/images/1229_3c_home_oiz_cardgrid_1600x1200.webp"/>
+        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.82),transparent 55%)"></div>
+        <div class="absolute bottom-0 left-0 p-7">
+          <span class="mono-label text-white/60 mb-2 block">Tech</span>
+          <h3 class="font-display text-white text-2xl font-bold tight">Engineering excellence</h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RANGE ================= -->
+<section id="range" class="py-section-sm md:py-section bg-surface-container px-6 md:px-14">
+  <div class="max-w-shell mx-auto">
+    <p class="mono-label text-ink-faint mb-4 reveal">02 — The Range</p>
+    <h2 class="font-display text-[34px] md:text-[46px] font-extrabold tight mb-12 reveal">Find the bike that fits you</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- Road -->
+      <div class="reveal relative aspect-[4/5] group overflow-hidden cursor-pointer ph">
+        <img alt="Road bikes" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+             src="https://www.orbea.com/uploads/microsites/images/5872_05_home_road_700x800.webp"/>
+        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors"></div>
+        <div class="absolute inset-0 flex flex-col justify-end items-center text-center px-8 pb-12">
+          <span class="mono-label text-white/70 mb-3">Road / Gravel</span>
+          <p class="text-white text-lg font-bold mb-6 leading-snug">Road: pure performance for asphalt or gravel</p>
+          <a href="#apply" class="btn btn-invert">Discover more</a>
+        </div>
+      </div>
+      <!-- Mountain -->
+      <div class="reveal relative aspect-[4/5] group overflow-hidden cursor-pointer ph">
+        <img alt="Mountain bikes" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+             src="https://www.orbea.com/uploads/microsites/images/8711_05_home_mtb_700x800.webp"/>
+        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors"></div>
+        <div class="absolute inset-0 flex flex-col justify-end items-center text-center px-8 pb-12">
+          <span class="mono-label text-white/70 mb-3">Mountain</span>
+          <p class="text-white text-lg font-bold mb-6 leading-snug">Mountain: the fastest and most natural feeling</p>
+          <a href="#apply" class="btn btn-invert">Discover more</a>
+        </div>
+      </div>
+      <!-- Urban -->
+      <div class="reveal relative aspect-[4/5] group overflow-hidden cursor-pointer ph">
+        <img alt="Urban and active bikes" onerror="this.classList.add('img-failed')" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+             src="https://www.orbea.com/uploads/microsites/images/6738_05_home_urban_700x800.webp"/>
+        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors"></div>
+        <div class="absolute inset-0 flex flex-col justify-end items-center text-center px-8 pb-12">
+          <span class="mono-label text-white/70 mb-3">Urban &amp; Active</span>
+          <p class="text-white text-lg font-bold mb-6 leading-snug">Urban &amp; active: unmatched ride feel and practicality</p>
+          <a href="#apply" class="btn btn-invert">Discover more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEALER SUPPORT ================= -->
+<section id="dealers" class="py-section-sm md:py-section bg-white px-6 md:px-14">
+  <div class="max-w-4xl mx-auto text-center mb-16 md:mb-20">
+    <p class="mono-label text-ink-faint mb-5 reveal">03 — The Commitment</p>
+    <h2 class="font-display text-[44px] md:text-[60px] font-extrabold tight mb-7 reveal">Made for more.</h2>
+    <p class="text-ink-soft text-lg md:text-xl leading-relaxed reveal">VEO Sports empowers authorized dealers with direct factory logistics and world-class technical support. Join the network leading Orbea's growth in Australia.</p>
+  </div>
+
+  <div class="max-w-shell mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
+    <div class="reveal border-t border-line pt-6">
+      <span class="mono-label text-velocity-teal">01</span>
+      <h3 class="font-display text-xl font-extrabold uppercase tracking-tight mt-4 mb-3">Integrated dropshipping</h3>
+      <p class="text-ink-soft leading-relaxed">Streamlined supply-chain management that reduces inventory risk and maximizes turnover through factory-direct fulfillment.</p>
+    </div>
+    <div class="reveal border-t border-line pt-6">
+      <span class="mono-label text-velocity-teal">02</span>
+      <h3 class="font-display text-xl font-extrabold uppercase tracking-tight mt-4 mb-3">Global asset suite</h3>
+      <p class="text-ink-soft leading-relaxed">Immediate access to high-fidelity marketing assets, technical training videos, and comprehensive workshop documentation.</p>
+    </div>
+    <div class="reveal border-t border-line pt-6">
+      <span class="mono-label text-velocity-teal">03</span>
+      <h3 class="font-display text-xl font-extrabold uppercase tracking-tight mt-4 mb-3">MyO custom integration</h3>
+      <p class="text-ink-soft leading-relaxed">Full technical support for the MyO customization program, letting your customers build unique bikes with expert guidance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEALER APPLICATION ================= -->
+<section id="apply" class="py-section-sm md:py-section bg-deep-obsidian text-white px-6 md:px-14">
+  <div class="max-w-shell mx-auto grid lg:grid-cols-12 gap-14 items-center">
+    <div class="lg:col-span-5">
+      <p class="mono-label text-velocity-teal mb-5">Dealer application</p>
+      <h2 class="font-display text-[36px] md:text-[52px] font-extrabold tight mb-6">Carry Orbea in your store.</h2>
+      <p class="text-white/70 text-lg leading-relaxed mb-8">Tell us about your business. Our team reviews every application personally and responds within two business days.</p>
+      <ul class="space-y-3 text-white/80">
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-velocity-teal text-[20px]">bolt</span> Factory-direct logistics &amp; margins</li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-velocity-teal text-[20px]">school</span> Technical training &amp; certification</li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-velocity-teal text-[20px]">tune</span> Full MyO customization support</li>
+      </ul>
+    </div>
+
+    <div class="lg:col-span-7">
+      <form id="dealerForm" novalidate class="bg-white/[0.04] border border-white/10 rounded-2xl p-7 md:p-10">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="mono-label text-white/60 mb-2 block">Full name*</span>
+            <input name="name" required class="field !bg-white/5 !border-white/15 !text-white placeholder:text-white/30" placeholder="Jane Rider"/>
+          </label>
+          <label class="block">
+            <span class="mono-label text-white/60 mb-2 block">Business name*</span>
+            <input name="business" required class="field !bg-white/5 !border-white/15 !text-white placeholder:text-white/30" placeholder="Coastline Cycles"/>
+          </label>
+          <label class="block">
+            <span class="mono-label text-white/60 mb-2 block">Email*</span>
+            <input name="email" type="email" required class="field !bg-white/5 !border-white/15 !text-white placeholder:text-white/30" placeholder="you@store.com.au"/>
+          </label>
+          <label class="block">
+            <span class="mono-label text-white/60 mb-2 block">State / Region*</span>
+            <select name="region" required class="field !bg-white/5 !border-white/15 !text-white">
+              <option value="" class="text-black">Select…</option>
+              <option class="text-black">New South Wales</option>
+              <option class="text-black">Victoria</option>
+              <option class="text-black">Queensland</option>
+              <option class="text-black">Western Australia</option>
+              <option class="text-black">South Australia</option>
+              <option class="text-black">Tasmania / ACT / NT</option>
+            </select>
+          </label>
+        </div>
+        <label class="block mt-4">
+          <span class="mono-label text-white/60 mb-2 block">Tell us about your store</span>
+          <textarea name="message" rows="3" class="field !rounded-2xl !bg-white/5 !border-white/15 !text-white placeholder:text-white/30" placeholder="Location, years trading, brands carried…"></textarea>
+        </label>
+        <div class="flex flex-col sm:flex-row items-center gap-4 mt-6">
+          <button type="submit" class="btn btn-invert w-full sm:w-auto px-10">Submit application</button>
+          <p id="formNote" role="status" class="text-white/50 text-sm">We reply within two business days.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-surface border-t border-line pt-20 pb-10 px-6 md:px-14">
+  <div class="max-w-shell mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+      <div class="lg:col-span-4">
+        <img src="data:image/png;base64,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" alt="VEO Sports" class="h-11 w-auto"/>
+        <h3 class="mono-label mt-8 mb-3">Join the VEO community</h3>
+        <p class="text-ink-soft text-sm mb-5 max-w-sm">Subscribe to receive updates, launches, and stories aligned with our values and purpose.</p>
+        <form id="newsletter" novalidate class="flex max-w-sm">
+          <input name="email" type="email" required placeholder="Email*" class="field !rounded-r-none flex-1"/>
+          <button class="bg-ink text-white px-5 rounded-r-full hover:bg-velocity-teal hover:text-ink transition-colors" aria-label="Subscribe">
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+          </button>
+        </form>
+        <p id="nlNote" role="status" class="text-velocity-teal text-sm mt-3 h-4"></p>
+      </div>
+
+      <nav class="lg:col-span-2">
+        <h4 class="mono-label text-ink-faint mb-6">About Orbea</h4>
+        <ul class="space-y-3 text-[13px] font-medium text-ink-soft">
+          <li><a class="hover:text-ink" href="#apply">History</a></li>
+          <li><a class="hover:text-ink" href="#apply">Articles</a></li>
+          <li><a class="hover:text-ink" href="#apply">Communities</a></li>
+          <li><a class="hover:text-ink" href="#apply">Careers</a></li>
+          <li><a class="hover:text-ink" href="#apply">Test ride a bike</a></li>
+        </ul>
+      </nav>
+      <nav class="lg:col-span-2">
+        <h4 class="mono-label text-ink-faint mb-6">Support</h4>
+        <ul class="space-y-3 text-[13px] font-medium text-ink-soft">
+          <li><a class="hover:text-ink" href="#apply">Help center</a></li>
+          <li><a class="hover:text-ink" href="#apply">Contact</a></li>
+          <li><a class="hover:text-ink" href="#apply">Warranty</a></li>
+          <li><a class="hover:text-ink" href="#apply">Register your bike</a></li>
+        </ul>
+      </nav>
+      <nav class="lg:col-span-2">
+        <h4 class="mono-label text-ink-faint mb-6">Manuals</h4>
+        <ul class="space-y-3 text-[13px] font-medium text-ink-soft">
+          <li><a class="hover:text-ink" href="#apply">Assembly guides</a></li>
+          <li><a class="hover:text-ink" href="#apply">Maintenance</a></li>
+          <li><a class="hover:text-ink" href="#apply">Archive</a></li>
+        </ul>
+      </nav>
+      <nav class="lg:col-span-2">
+        <h4 class="mono-label text-ink-faint mb-6">Network</h4>
+        <ul class="space-y-3 text-[13px] font-medium text-ink-soft">
+          <li><a class="hover:text-ink" href="#apply">Find a store</a></li>
+          <li><a class="hover:text-ink" href="#apply">Dealer portal</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-line gap-6">
+      <div class="flex items-center gap-2 mono-label text-ink">
+        <span class="material-symbols-outlined text-[18px]">public</span> Australia
+      </div>
+      <div class="flex gap-8 mono-label text-ink-faint">
+        <a class="hover:text-ink" href="#apply">Privacy policy</a>
+        <a class="hover:text-ink" href="#apply">Terms of use</a>
+        <a class="hover:text-ink" href="#apply">Cookies</a>
+      </div>
+      <div class="mono-label text-ink-faint">© 2024 VEO Sports Pty Ltd · Exclusive Orbea importer</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('shadow-[0_1px_20px_rgba(0,0,0,0.06)]', scrollY > 12), { passive: true });
+
+  // Mobile menu
+  const menu = document.getElementById('mobileMenu');
+  const openM = document.getElementById('menuBtn');
+  const closeM = document.getElementById('menuClose');
+  const setMenu = (open) => {
+    menu.classList.toggle('translate-x-full', !open);
+    openM.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  openM.addEventListener('click', () => setMenu(true));
+  closeM.addEventListener('click', () => setMenu(false));
+  menu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i % 4, 3) * 60) + 'ms';
+    io.observe(el);
+  });
+
+  // Dealer form (front-end UX only — wire to a real endpoint before launch)
+  const dForm = document.getElementById('dealerForm');
+  const note = document.getElementById('formNote');
+  dForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(dForm);
+    const missing = ['name','business','email','region'].filter(k => !String(data.get(k) || '').trim());
+    if (missing.length) { note.textContent = 'Please complete the required fields.'; note.className = 'text-red-300 text-sm'; return; }
+    note.textContent = 'Application received — we\'ll be in touch shortly. ✓';
+    note.className = 'text-velocity-teal text-sm';
+    dForm.querySelector('button[type=submit]').textContent = 'Submitted';
+    dForm.reset();
+  });
+
+  // Newsletter
+  const nForm = document.getElementById('newsletter');
+  const nlNote = document.getElementById('nlNote');
+  nForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = String(new FormData(nForm).get('email') || '');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { nlNote.textContent = 'Enter a valid email.'; nlNote.className = 'text-red-500 text-sm mt-3 h-4'; return; }
+    nlNote.textContent = 'Subscribed. Welcome to VEO. ✓'; nlNote.className = 'text-velocity-teal text-sm mt-3 h-4'; nForm.reset();
+  });
+</script>
+</body>
+</html>
